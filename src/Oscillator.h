@@ -86,6 +86,7 @@ public:
     float nextSample() noexcept
     {
         float output = 0.0f;
+        float wet;
 
         // Output the pulse by playing through the wavetable once,
         // followed by dead time for the remainder of the period.
@@ -93,16 +94,12 @@ public:
             output = readFromWavetable(pos);
 
             // Use half the Blackman-Harris window as waveshaper.
-            {
-                float wet = readFromWavetable(output * size * 0.5f);
-                output += drive * 0.8f * (wet - output);
-            }
+            wet = readFromWavetable(output * size * 0.5f);
+            output += drive * 0.8f * (wet - output);
 
             // Soft-clipping waveshaper.
-            {
-                float wet = std::atan(k * output) * oneOverAtanK;
-                output += drive * (wet - output);
-            }
+            wet = std::atan(k * output) * oneOverAtanK;
+            output += drive * (wet - output);
 
             output *= amplitude;
             pos += inc;

@@ -83,6 +83,8 @@ juce_generate_juce_header(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE
     src/DCBlockFilter.h
     src/DSP.h
+    src/LookAndFeel.cpp
+    src/LookAndFeel.h
     src/Oscillator.h
     src/Parameters.cpp
     src/Parameters.h
@@ -93,17 +95,27 @@ target_sources(${PROJECT_NAME} PRIVATE
     src/Synth.cpp
     src/Synth.h
     src/Voice.h
+    src/XYPad.cpp
+    src/XYPad.h
 )
 
-# juce_add_binary_data(BinaryData SOURCES
-#     resources/Logo.png
-# )
+juce_add_binary_data(BinaryData SOURCES
+    resources/Background.png
+    resources/LineHorz.png
+    resources/LineVert.png
+    resources/Off0.png
+    resources/Off1.png
+    resources/Off2.png
+    resources/On0.png
+    resources/On1.png
+    resources/On2.png
+    resources/Pointer.png
+)
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0
-    JUCE_DISPLAY_SPLASH_SCREEN=0
     JUCE_REPORT_APP_USAGE=0
     JUCE_MODAL_LOOPS_PERMITTED=0
     DONT_SET_USING_JUCE_NAMESPACE=1
@@ -111,7 +123,7 @@ target_compile_definitions(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        # BinaryData
+        BinaryData
         juce::juce_audio_utils
         juce::juce_dsp
     PUBLIC

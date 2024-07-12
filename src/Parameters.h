@@ -9,9 +9,8 @@ namespace ParameterID
     const juce::ParameterID glideTime { "glideTime", 1 };
 }
 
-class Parameters
+struct Parameters
 {
-public:
     Parameters(juce::AudioProcessorValueTreeState& apvts);
 
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
@@ -22,6 +21,15 @@ public:
 
     // *** Plug-in parameters ***
 
+    juce::AudioParameterFloat* widthParam;
+    juce::AudioParameterFloat* driveParam;
+    juce::AudioParameterChoice* octaveParam;
+    juce::AudioParameterFloat* tuningParam;
+    juce::AudioParameterFloat* glideTimeParam;
+
+    // *** Parameter values ***
+
+    float sampleRate;
     float pulseTime;  // seconds
     int transpose;    // semitones
     float tuning;     // cents
@@ -35,13 +43,4 @@ public:
     // *** Derived values ***
 
     float pitchModulation;
-
-private:
-    float sampleRate;
-
-    juce::AudioParameterFloat* widthParam;
-    juce::AudioParameterFloat* driveParam;
-    juce::AudioParameterChoice* octaveParam;
-    juce::AudioParameterFloat* tuningParam;
-    juce::AudioParameterFloat* glideTimeParam;
 };

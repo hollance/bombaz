@@ -43,12 +43,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
         juce::StringArray { "-2", "-1", "0" },
         1));
 
+    auto tuningStringFromValue = [](float value, int)
+    {
+        return juce::String(int(value)) + " cents";
+    };
+
     layout.add(std::make_unique<juce::AudioParameterFloat>(
         ParameterID::tuning,
         "Tune",
         juce::NormalisableRange<float>(-100.0f, 100.0f, 0.01f),
         0.0f,
-        juce::AudioParameterFloatAttributes().withLabel("cents")));
+        juce::AudioParameterFloatAttributes()
+            .withStringFromValueFunction(tuningStringFromValue)));
 
     auto glideTimeStringFromValue = [](float value, int)
     {

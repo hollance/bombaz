@@ -1,6 +1,6 @@
 # Bombaz
 
-Monophonic bass synth VST/AU plug-in based on Window Function synthesis. Useful for adding sub-bass layers.
+Monophonic bass synth VST/AU plug-in based on Window Function synthesis. It's particularly useful for adding sub-bass layers.
 
 ![](Bombaz.jpg)
 
@@ -10,9 +10,11 @@ How to use this plug-in:
 
 - **OCTAVE** Transposes the sound by –2, –1, or 0 octaves.
 
-- **TUNING** Additional fine-tuning, from –100 to +100 cents.
+- **TUNING** Additional fine-tuning from –100 to +100 cents.
 
 - **GLIDE** Enables a portamento effect.
+
+The pitch bend wheel has a range of ±7 semitones.
 
 <!-- [Read more about how this plug-in works on my blog](https://audiodev.blog/bombaz/) -->
 

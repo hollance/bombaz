@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.13" CACHE STRING "Minimum OS X deployment target")
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
-project(BassSynth VERSION 1.0.0 LANGUAGES CXX)
+project(Bombaz VERSION 1.0.0 LANGUAGES CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS YES)
 option(JUCE_ENABLE_MODULE_SOURCE_GROUPS "Enable Module Source Groups" ON)
@@ -66,8 +66,8 @@ endif()
 juce_add_plugin(${PROJECT_NAME}
     COMPANY_NAME "audiodev.blog"
     PLUGIN_MANUFACTURER_CODE Dvbl
-    PLUGIN_CODE Bas2
-    BUNDLE_ID "blog.audiodev.bass-synth"
+    PLUGIN_CODE Bbaz
+    BUNDLE_ID "blog.audiodev.bombaz"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
@@ -75,7 +75,7 @@ juce_add_plugin(${PROJECT_NAME}
     EDITOR_WANTS_KEYBOARD_FOCUS FALSE
     COPY_PLUGIN_AFTER_BUILD TRUE
     FORMATS AU VST3 Standalone
-    PRODUCT_NAME "BassSynth"
+    PRODUCT_NAME "Bombaz"
 )
 
 juce_generate_juce_header(${PROJECT_NAME})

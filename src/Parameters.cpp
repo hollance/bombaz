@@ -34,7 +34,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
         ParameterID::drive,
         "Drive",
         juce::NormalisableRange<float>(0.0f, 100.0f, 0.01f, 1.0f),
-        0.0f,
+        25.0f,
         juce::AudioParameterFloatAttributes().withLabel("%")));
 
     layout.add(std::make_unique<juce::AudioParameterChoice>(

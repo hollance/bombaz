@@ -16,7 +16,7 @@ How to use this plug-in:
 
 The pitch bend wheel has a range of ±7 semitones.
 
-<!-- [Read more about how this plug-in works on my blog](https://audiodev.blog/bombaz/) -->
+[Read more about how this plug-in works on my blog](https://audiodev.blog/bombaz/)
 
 ## Installation instructions
 

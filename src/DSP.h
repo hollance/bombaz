@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 inline float gainToDecibels(float value) noexcept
 {
     return 8.6858896381f * std::log(value);  // 20 * log10(x)

@@ -3,7 +3,7 @@
 class DCBlockFilter
 {
 public:
-    DCBlockFilter() : r(0.995f) { }
+    DCBlockFilter() = default;
 
     void reset()
     {
@@ -25,5 +25,7 @@ public:
     }
 
 private:
-    float zx, zy, r;
+    float r = 0.995f;
+    float zx = 0.0f;
+    float zy = 0.0f;
 };

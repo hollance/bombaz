@@ -1,7 +1,9 @@
 #pragma once
 
-#include <cmath>
 #include "DSP.h"
+#include <algorithm>
+#include <array>
+#include <cmath>
 
 class Oscillator
 {
@@ -86,7 +88,6 @@ public:
     float nextSample() noexcept
     {
         float output = 0.0f;
-        float wet;
 
         // Output the pulse by playing through the wavetable once,
         // followed by dead time for the remainder of the period.
@@ -94,7 +95,7 @@ public:
             output = readFromWavetable(pos);
 
             // Use half the Blackman-Harris window as waveshaper.
-            wet = readFromWavetable(output * size * 0.5f);
+            float wet = readFromWavetable(output * size * 0.5f);
             output += drive * 0.8f * (wet - output);
 
             // Soft-clipping waveshaper.
@@ -124,7 +125,7 @@ private:
         size = float(wavetable.size() - 1);
 
         // Create a pulse shaped like a Blackman-Harris window (asymmetric).
-        for (int i = 0; i < int(wavetable.size()); ++i) {
+        for (size_t i = 0; i < wavetable.size(); ++i) {
             float arg = 6.2831853071795864f * float(i) / size;
             wavetable[i] = 0.35875f - 0.48829f * std::cos(arg)
                                     + 0.14128f * std::cos(2.0f * arg)
@@ -137,7 +138,7 @@ private:
         // Linearly interpolate the wavetable.
         int x = int(readIndex);
         float a = readIndex - float(x);
-        return a * wavetable[x + 1] + (1.0f - a) * wavetable[x];
+        return a * wavetable[size_t(x) + 1] + (1.0f - a) * wavetable[size_t(x)];
     }
 
     void applyChanges() noexcept

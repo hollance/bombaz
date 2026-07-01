@@ -98,4 +98,6 @@ private:
     Oscillator osc;
     float pitch;
     float target, glide, glideDir;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Voice)
 };

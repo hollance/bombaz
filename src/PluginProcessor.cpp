@@ -1,5 +1,5 @@
-#include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "PluginProcessor.h"
 
 BassSynthAudioProcessor::BassSynthAudioProcessor() :
     AudioProcessor(
@@ -19,7 +19,7 @@ bool BassSynthAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts)
 
 void BassSynthAudioProcessor::prepareToPlay(double newSampleRate, int maximumBlockSize)
 {
-    float sampleRate = float(newSampleRate);
+    auto sampleRate = float(newSampleRate);
 
     params.prepareToPlay(sampleRate);
     params.reset();

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <JuceHeader.h>
 #include "Synth.h"
+#include <JuceHeader.h>
 
 class BassSynthAudioProcessor : public juce::AudioProcessor
 {

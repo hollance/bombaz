@@ -1,8 +1,8 @@
 #pragma once
 
-#include <JuceHeader.h>
 #include "DCBlockFilter.h"
 #include "Voice.h"
+#include <JuceHeader.h>
 
 class Synth
 {
@@ -31,4 +31,6 @@ private:
     std::array<int, 10> queue;
 
     DCBlockFilter dcKiller;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Synth)
 };

@@ -1,4 +1,3 @@
-#include "PluginProcessor.h"
 #include "PluginEditor.h"
 
 BassSynthAudioProcessorEditor::BassSynthAudioProcessorEditor(BassSynthAudioProcessor& p) :
@@ -76,7 +75,7 @@ void BassSynthAudioProcessorEditor::setOctaveValue(float newValue)
 {
     const juce::ScopedValueSetter<bool> svs(ignoreCallbacks, true);
 
-    int newIndex = int(newValue);
+    auto newIndex = size_t(newValue);
     octaveButton.setImages(
         false, true, true,
         offImages[newIndex], 1.0f, juce::Colours::transparentBlack,

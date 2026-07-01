@@ -1,5 +1,5 @@
-#include "Synth.h"
 #include "DSP.h"
+#include "Synth.h"
 
 Synth::Synth(Parameters& params_) : params(params_), voice(params) { }
 
@@ -54,6 +54,9 @@ void Synth::midiMessage(uint8_t data0, uint8_t data1, uint8_t data2) noexcept
 
         case 0xE0:
             pitchWheel(data1, data2);
+            break;
+
+        default:
             break;
     }
 }

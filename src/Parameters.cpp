@@ -1,10 +1,9 @@
-#include <JuceHeader.h>
 #include "DSP.h"
 #include "Parameters.h"
 
 template<typename T>
-inline void castParameter(juce::AudioProcessorValueTreeState& apvts,
-                          const juce::ParameterID& id, T& destination)
+inline static void castParameter(juce::AudioProcessorValueTreeState& apvts,
+                                 const juce::ParameterID& id, T& destination)
 {
     destination = dynamic_cast<T>(apvts.getParameter(id.getParamID()));
     jassert(destination);  // parameter does not exist or wrong type
@@ -98,8 +97,8 @@ void Parameters::update() noexcept
 {
     pulseTime = 0.015f - widthParam->get() * 0.00012f;  // 15 - 3 msec
 
-    static int semitones[] = { -24, -12, 0 };
-    transpose = semitones[octaveParam->getIndex()];
+    static std::array<int, 3> semitones = { -24, -12, 0 };
+    transpose = semitones[size_t(octaveParam->getIndex())];
 
     tuning = tuningParam->get();
     drive = driveParam->get() * 0.01f;

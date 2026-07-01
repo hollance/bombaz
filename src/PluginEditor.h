@@ -1,9 +1,9 @@
 #pragma once
 
-#include <JuceHeader.h>
-#include "PluginProcessor.h"
 #include "LookAndFeel.h"
+#include "PluginProcessor.h"
 #include "XYPad.h"
+#include <JuceHeader.h>
 
 class BassSynthAudioProcessorEditor : public juce::AudioProcessorEditor,
                                       private juce::ValueTree::Listener,
@@ -30,8 +30,8 @@ private:
     juce::Slider glideSlider;
 
     juce::ImageButton octaveButton;
-    juce::Image offImages[3];
-    juce::Image onImages[3];
+    std::array<juce::Image, 3> offImages;
+    std::array<juce::Image, 3> onImages;
 
     juce::AudioProcessorValueTreeState::SliderAttachment tuningAttachment {
         audioProcessor.apvts, ParameterID::tuning.getParamID(), tuningSlider

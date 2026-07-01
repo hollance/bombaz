@@ -63,13 +63,13 @@ Then open **build/Bombaz.sln** in Visual Studio and build the VST3 project.
 On Linux:
 
 ```bash
-cmake -B build-release -G "Ninja Multi-Config" \
+cmake -B build -G "Ninja Multi-Config" \
     -DCMAKE_C_COMPILER=/usr/bin/clang \
     -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DCMAKE_CONFIGURATION_TYPES="Release;Debug"
 
-cmake --build build-release --config Release --target Bombaz_VST3
-cmake --build build-release --config Release --target Bombaz_LV2
+cmake --build build --config Release --target Bombaz_VST3
+cmake --build build --config Release --target Bombaz_LV2
 ```
 
 ## Credits & license
